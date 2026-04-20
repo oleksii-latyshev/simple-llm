@@ -1,0 +1,5 @@
+The Ordinator project is a DataCorp initiative launched on April 15, 2024. The project's primary goal is to create autonomous AI agents for the automatic sorting and analysis of text documents. The system's chief architect is Dr. Elias Wander.
+
+According to internal documentation, the Ordinator agent uses a local language model to make decisions. For file system interaction, it is given access to specialized tools, such as ReadDocumentTool, which allows the agent to read documents in chunks, avoiding context overflow.
+
+Critical Security Rule #73-B states: the agent is strictly prohibited from modifying or deleting system files. If files with the .sys or .log extensions are detected, the agent is required to immediately terminate its operation and send a notification to the system administrator via email at admin@datacorp.local.

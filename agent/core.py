@@ -5,9 +5,9 @@ from agent.tool_runner import get_tools_schema, execute_tool
 from agent.helpers import load_system_prompt, parse_tool_args, create_client
 
 
-def run_agent(user_query: str) -> str:
+def run_agent(user_query: str, source: str = "auto") -> str:
     client = create_client()
-    tools_schema = get_tools_schema()
+    tools_schema = get_tools_schema(source)
 
     messages = [
         {"role": "system", "content": load_system_prompt()},

@@ -5,9 +5,17 @@ from agent.tool_runner.discovery import discover_tools
 # Built once at import time
 _REGISTRY = discover_tools()
 
+# Map source modes to tool names
+SOURCE_TOOLS = {
+    "file": ["read_document"],
+    "db": ["query_products"],
+    "auto": list(_REGISTRY.keys()),
+}
 
-def get_tools_schema() -> list[dict]:
-    return [entry["schema"] for entry in _REGISTRY.values()]
+
+def get_tools_schema(source: str = "auto") -> list[dict]:
+    allowed = SOURCE_TOOLS.get(source, SOURCE_TOOLS["auto"])
+    return [entry["schema"] for name, entry in _REGISTRY.items() if name in allowed]
 
 
 def execute_tool(name: str, args: dict) -> dict:

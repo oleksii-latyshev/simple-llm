@@ -37,8 +37,33 @@ services:
     tty: true
     environment:
       - OLLAMA_HOST=http://ollama:11434
+      - DATABASE_URL=postgresql://agent:agent@postgres:5432/agent_db
     volumes:
-      - ./test_document.txt:/app/test_document.txt
+      - ./data:/app/data
     depends_on:
       ollama-puller:
         condition: service_completed_successfully
+      postgres:
+        condition: service_healthy
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: agent
+      POSTGRES_PASSWORD: agent
+      POSTGRES_DB: agent_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data/seed.sql:/docker-entrypoint-initdb.d/seed.sql
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U agent -d agent_db" ]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+volumes:
+  pgdata:

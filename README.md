@@ -159,3 +159,15 @@ docker compose run agent
 | `MODEL_NAME`         | `llama3.2`               | Model to use               |
 | `SYSTEM_PROMPT_PATH` | `system_prompt.md`       | Path to system prompt file |
 | `MAX_ITERATIONS`     | `10`                     | Max agent loop iterations  |
+
+---
+
+## 📝 Example of questions
+
+### To check how to work the File Read tool
+
+Who is the main architect of the Intern project?
+
+### To check how to work the DB Query tool
+
+What are the pros and cons of Sony WH-1000XM5?
