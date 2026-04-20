@@ -107,5 +107,3 @@ def run_agent(user_query: str):
 if __name__ == "__main__":
     query = input("❓ Введите ваш вопрос: ")
     run_agent(query)
-    question = "Прочитай файл test_document.txt и скажи, о чем в нем говорится?"
-    run_agent(question)
