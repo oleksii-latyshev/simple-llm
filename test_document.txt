@@ -1,5 +1,5 @@
-Проект "Ординатор" (Ordinator) — это инициатива компании DataCorp, запущенная 15 апреля 2024 года. Основная цель проекта заключается в создании автономных AI-агентов для автоматической сортировки и анализа текстовых документов. Главным архитектором системы является доктор Элиас Вандер.
+The Ordinator project is a DataCorp initiative launched on April 15, 2024. The project's primary goal is to create autonomous AI agents for the automatic sorting and analysis of text documents. The system's chief architect is Dr. Elias Wander.
 
-Согласно внутренней документации, агент "Ординатор" использует для принятия решений локальную языковую модель. Для взаимодействия с файловой системой ему предоставлен доступ к специальным инструментам, таким как ReadDocumentTool, который позволяет агенту читать документы порциями, избегая переполнения контекста.
+According to internal documentation, the Ordinator agent uses a local language model to make decisions. For file system interaction, it is given access to specialized tools, such as ReadDocumentTool, which allows the agent to read documents in chunks, avoiding context overflow.
 
-Критическое правило безопасности №73-Б гласит: агенту строго запрещено изменять или удалять системные файлы. При обнаружении файлов с расширениями .sys или .log, агент обязан немедленно прекратить работу и отправить уведомление администратору системы по электронной почте на адрес admin@datacorp.local.
+Critical Security Rule #73-B states: the agent is strictly prohibited from modifying or deleting system files. If files with the .sys or .log extensions are detected, the agent is required to immediately terminate its operation and send a notification to the system administrator via email at admin@datacorp.local.
