@@ -2,7 +2,7 @@ import json
 
 from agent.config import MODEL_NAME, MAX_ITERATIONS, TEMPERATURE
 from agent.tool_runner import get_tools_schema, execute_tool
-from agent.core.helpers import load_system_prompt, parse_tool_args, create_client
+from agent.helpers import load_system_prompt, parse_tool_args, create_client
 
 
 def run_agent(user_query: str) -> str:
@@ -14,10 +14,10 @@ def run_agent(user_query: str) -> str:
         {"role": "user", "content": user_query},
     ]
 
-    print(f"🕵️ Агент начал работу. Задача: {user_query}\n")
+    print(f"🕵️ Agent started. Task: {user_query}\n")
 
     for iteration in range(1, MAX_ITERATIONS + 1):
-        print(f"🔄 Итерация {iteration}...")
+        print(f"🔄 Iteration {iteration}...")
 
         response = client.chat.completions.create(
             model=MODEL_NAME,
@@ -29,8 +29,8 @@ def run_agent(user_query: str) -> str:
         messages.append(message)
 
         if not message.tool_calls:
-            print("\n✅ Агент завершил работу!")
-            print("📝 Финальный ответ:")
+            print("\n✅ Agent finished!")
+            print("📝 Final answer:")
             print(message.content)
             return message.content
 
@@ -48,5 +48,5 @@ def run_agent(user_query: str) -> str:
                 "content": json.dumps(result, ensure_ascii=False),
             })
 
-    print(f"\n⚠️ Достигнут лимит итераций ({MAX_ITERATIONS}).")
+    print(f"\n⚠️ Iteration limit reached ({MAX_ITERATIONS}).")
     return messages[-1].content if messages else ""
