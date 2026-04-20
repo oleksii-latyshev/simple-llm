@@ -19,7 +19,7 @@ TOOLS = [
         "type": "function",
         "function": {
             "name": "read_document_tool",
-            "description": "Читає фрагмент текстового файлу. Використовуй цей інструмент для вивчення документа.",
+            "description": "Reads a fragment of a text file. Use this tool to study the contents of a document.",
             "parameters": ReadDocumentArgs.model_json_schema() # Pydantic генерирует схему автоматически
         }
     }
@@ -72,6 +72,9 @@ def run_agent(user_query: str):
                 except json.JSONDecodeError:
                     tool_args = {}
 
+                # Убираем None-значения, чтобы сработали дефолты функции
+                tool_args = {k: v for k, v in tool_args.items() if v is not None}
+
                 print(f"🛠️ Модель запрашивает инструмент: {tool_name} с аргументами {tool_args}")
 
                 # Шаг В: Выполнение инструмента
@@ -104,9 +107,5 @@ def run_agent(user_query: str):
 if __name__ == "__main__":
     query = input("❓ Введите ваш вопрос: ")
     run_agent(query)
-
-# Запуск скрипта
-if __name__ == "__main__":
-    # Тестовый вопрос
     question = "Прочитай файл test_document.txt и скажи, о чем в нем говорится?"
     run_agent(question)

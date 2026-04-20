@@ -1,10 +1,10 @@
 from pydantic import BaseModel, Field
 
 class ReadDocumentArgs(BaseModel):
-    """Аргументы для инструмента чтения документа."""
-    file_path: str = Field(..., description="Шлях до текстового файлу, який потрібно прочитати.")
-    offset: int = Field(0, description="Номер рядка, з якого почати читання.")
-    limit: int = Field(50, description="Максимальна кількість рядків для читання за один раз.")
+    """Arguments for the document reading tool."""
+    file_path: str = Field(..., description="Path to the text file to read.")
+    offset: int = Field(0, description="Line number to start reading from (0-based).")
+    limit: int = Field(50, description="Maximum number of lines to read at once.")
 
 def read_document_tool(file_path: str, offset: int = 0, limit: int = 50) -> dict:
     """
