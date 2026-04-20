@@ -9,6 +9,7 @@ _REGISTRY = discover_tools()
 SOURCE_TOOLS = {
     "file": ["read_document"],
     "db": ["query_products"],
+    "web": ["web_search"],
     "auto": list(_REGISTRY.keys()),
 }
 

@@ -1,6 +1,6 @@
 from agent.core import run_agent
 
-SOURCES = {"1": "auto", "2": "file", "3": "db"}
+SOURCES = {"1": "auto", "2": "file", "3": "db", "4": "web"}
 
 
 if __name__ == "__main__":
@@ -8,6 +8,7 @@ if __name__ == "__main__":
     print("  1. auto (LLM decides)")
     print("  2. file (text documents only)")
     print("  3. db   (product database only)")
+    print("  4. web  (internet search only)")
     choice = input("Your choice [1]: ").strip() or "1"
     source = SOURCES.get(choice, "auto")
     print(f"→ Source: {source}\n")
