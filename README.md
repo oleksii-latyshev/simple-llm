@@ -166,7 +166,7 @@ docker compose run agent
 
 ### To check how to work the File Read tool
 
-Who is the main architect of the Intern project?
+Who is the main architect of the Ordinator project?
 
 ### To check how to work the DB Query tool
 
